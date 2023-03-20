@@ -56,11 +56,15 @@ export default function JobDetails() {
   const [refreshing, setRefreshing] = useState<boolean>(false);
   const [activeTabs, setActiveTabs] = useState<string>(tabs[0]);
 
-  const { isLoading, error, data } = useFetch("job-details", {
+  const { isLoading, error, data, refetch } = useFetch("job-details", {
     job_id: params.id,
   });
 
-  const onRefresh = useCallback(() => {}, []);
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    refetch();
+    setRefreshing(false);
+  }, []);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
