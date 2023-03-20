@@ -36,7 +36,7 @@ const Welcome = ({searchTerm, setSearchTerm, handleOnPress}: WelcomeProps) => {
             style={styles().searchInput}
             placeholder="Search for jobs"
             value={searchTerm}
-            onChange={(text) => setSearchTerm(text.nativeEvent.text)}
+            onChangeText={(text) => setSearchTerm(text)}
           />
         </View>
         <TouchableOpacity style={styles().searchBtn} onPress={handleOnPress}>

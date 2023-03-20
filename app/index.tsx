@@ -53,7 +53,7 @@ const Home = () => {
             setSearchTerm={setSearchTerm}
             handleOnPress={() => {
               if (searchTerm) {
-                router.push(`Search?${searchTerm}`)
+                router.push(`/search/${searchTerm}`)
                 setSearchTerm("");
               };
             }}

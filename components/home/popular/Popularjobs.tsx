@@ -22,10 +22,13 @@ interface PopularjobsProps {
 
 const Popularjobs = ({ isLoading, error, data }: PopularjobsProps) => {
   const router = useRouter();
-
+  const [selectedJob, setSelectedJob] = React.useState<string>(data?.at(0)?.job_id || "");
   // console.log("🚀 ~ file: Popularjobs.tsx:24 ~ Popularjobs ~ data:", data)
 
-  const handleCardPress = (job: JobDataProps) => {};
+  const handleCardPress = (job: JobDataProps) => {
+    router.push(`/job-details/${job.job_id}`);
+    setSelectedJob(job.job_id);
+  };
 
   return (
     <View style={styles.container}>
@@ -50,7 +53,7 @@ const Popularjobs = ({ isLoading, error, data }: PopularjobsProps) => {
             renderItem={({ item }) => (
               <PopularJobCard
                 item={item}
-                selectedJob={item.job_id}
+                selectedJob={selectedJob}
                 handleCardPress={handleCardPress}
               />
             )}
